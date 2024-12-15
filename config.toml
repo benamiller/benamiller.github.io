@@ -19,17 +19,4 @@ defaultContentLanguage = "en"
       unsafe = true
 
 [params]
-  custom_css = []
-  custom_js = []
-
-[params.assets]
-  disableHLJS = true
-  customJS = [
-    "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js",
-    "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js",
-    "/js/katex.js"
-  ]
-  customCSS = ["https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"]
-
-[params.math]
-  enable = true
+  math = true
