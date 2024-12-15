@@ -2,12 +2,10 @@ baseURL = "https://benamiller.github.io/"
 title = "Ben Miller - Blog"
 paginate = 5
 theme = "PaperMod"
-
 enableRobotsTXT = true
 buildDrafts = false
 buildFuture = false
 buildExpired = false
-
 languageCode = "en-us"
 defaultContentLanguage = "en"
 
@@ -19,3 +17,18 @@ defaultContentLanguage = "en"
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+
+[params]
+  custom_css = []
+  custom_js = []
+
+[params.assets]
+  disableHLJS = true
+  customJS = [
+    "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js",
+    "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  ]
+  customCSS = ["https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"]
+
+[params.math]
+  enable = true
