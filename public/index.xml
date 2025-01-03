@@ -4,7 +4,7 @@
     <title>Ben Miller - Blog</title>
     <link>http://localhost:1313/</link>
     <description>Recent content on Ben Miller - Blog</description>
-    <generator>Hugo -- 0.139.4</generator>
+    <generator>Hugo -- 0.140.2</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 15 Dec 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
@@ -41,25 +41,13 @@ $$
 $$&lt;/p&gt;</description>
     </item>
     <item>
-      <title>AGI Today</title>
-      <link>http://localhost:1313/posts/agi-today/</link>
-      <pubDate>Fri, 13 Dec 2024 17:02:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/agi-today/</guid>
-      <description>&lt;p&gt;Is AGI already here?&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>AI Parents</title>
+      <title>AI as Homo Sapiens&#39; Parents</title>
       <link>http://localhost:1313/posts/ai-parents/</link>
       <pubDate>Fri, 13 Dec 2024 17:02:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/ai-parents/</guid>
-      <description>&lt;h2 id=&#34;testing&#34;&gt;Testing&lt;/h2&gt;</description>
-    </item>
-    <item>
-      <title>Is AI an Existential Risk?</title>
-      <link>http://localhost:1313/posts/is-ai-an-existential-risk/</link>
-      <pubDate>Fri, 13 Dec 2024 17:02:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/is-ai-an-existential-risk/</guid>
-      <description>&lt;p&gt;Is AI an existential risk?&lt;/p&gt;</description>
+      <description>&lt;h2 id=&#34;ai-as-homo-sapiens-parents&#34;&gt;AI as Homo Sapiens&amp;rsquo; Parents&lt;/h2&gt;
+&lt;p&gt;&lt;img alt=&#34;Image&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/images/ai_humans.webp&#34;&gt;&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m imagining future AI systems as benevolent, competent, and caring parents. Like our parents during our nascent development, they can easily overpower us. They can control, manipulate, support, or reshape our desires as they manifest, and they can guide us in positive directions, even when we don&amp;rsquo;t understand what is happening. They can optimize for our well-being better than we can ourselves, thanks to their richer, more comprehensive understanding of the world.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
