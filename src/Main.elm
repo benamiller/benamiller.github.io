@@ -3,8 +3,8 @@ module Main exposing (main)
 import Books
 import Browser
 import Browser.Navigation as Nav
-import Html exposing (Html, a, div, h1, text)
-import Html.Attributes exposing (class, id)
+import Html exposing (Html, a, button, div, h1, span, text)
+import Html.Attributes exposing (class, classList)
 import Html.Events exposing (onClick)
 import Movies
 import Papers
@@ -16,7 +16,10 @@ import Url exposing (Url)
 
 
 type alias Model =
-    { key : Nav.Key, currentPage : Page }
+    { key : Nav.Key
+    , currentPage : Page
+    , isMenuOpen : Bool
+    }
 
 
 type Page
@@ -30,7 +33,7 @@ type Page
 
 init : () -> Url -> Nav.Key -> ( Model, Cmd Msg )
 init _ url key =
-    ( { key = key, currentPage = urlToPage url }, Cmd.none )
+    ( { key = key, currentPage = urlToPage url, isMenuOpen = False }, Cmd.none )
 
 
 
@@ -40,6 +43,8 @@ init _ url key =
 type Msg
     = Navigate String
     | UrlChanged Url
+    | ToggleMenu
+    | NavigateAndClose String
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -51,6 +56,12 @@ update msg model =
         UrlChanged url ->
             ( { model | currentPage = urlToPage url }, Cmd.none )
 
+        ToggleMenu ->
+            ( { model | isMenuOpen = not model.isMenuOpen }, Cmd.none )
+
+        NavigateAndClose path ->
+            ( { model | isMenuOpen = False }, Nav.pushUrl model.key path )
+
 
 
 -- VIEW
@@ -61,27 +72,38 @@ view model =
     { title = "Ben"
     , body =
         [ div [ class "application" ]
-            [ navigation
+            [ navigation model
             , pageContent model.currentPage
             ]
         ]
     }
 
 
-navigation : Html Msg
-navigation =
+navigation : Model -> Html Msg
+navigation model =
     div [ class "navigation" ]
-        [ a [ onClick (Navigate "/"), class "nav-item", id "home-link" ] [ text "Home" ]
-        , text " | "
-        , a [ onClick (Navigate "/blog"), class "nav-item" ] [ text "Blog" ]
-        , text " | "
-        , a [ onClick (Navigate "/projects"), class "nav-item" ] [ text "Projects" ]
-        , text " | "
-        , a [ onClick (Navigate "/books"), class "nav-item" ] [ text "Books" ]
-        , text " | "
-        , a [ onClick (Navigate "/movies"), class "nav-item" ] [ text "Movies" ]
-        , text " | "
-        , a [ onClick (Navigate "/papers"), class "nav-item" ] [ text "Papers" ]
+        [ button [ onClick ToggleMenu, class "nav-toggle" ]
+            [ text
+                (if model.isMenuOpen then
+                    "✕"
+
+                 else
+                    "☰"
+                )
+            ]
+        , div [ classList [ ( "nav-menu", True ), ( "open", model.isMenuOpen ) ] ]
+            [ a [ onClick (NavigateAndClose "/"), class "nav-item" ] [ text "Home" ]
+            , span [ class "separator" ] [ text " | " ]
+            , a [ onClick (NavigateAndClose "/blog"), class "nav-item" ] [ text "Blog" ]
+            , span [ class "separator" ] [ text " | " ]
+            , a [ onClick (NavigateAndClose "/projects"), class "nav-item" ] [ text "Projects" ]
+            , span [ class "separator" ] [ text " | " ]
+            , a [ onClick (NavigateAndClose "/books"), class "nav-item" ] [ text "Books" ]
+            , span [ class "separator" ] [ text " | " ]
+            , a [ onClick (NavigateAndClose "/movies"), class "nav-item" ] [ text "Movies" ]
+            , span [ class "separator" ] [ text " | " ]
+            , a [ onClick (NavigateAndClose "/papers"), class "nav-item" ] [ text "Papers" ]
+            ]
         ]
 
 

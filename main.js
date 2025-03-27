@@ -5195,6 +5195,7 @@ var $author$project$Main$init = F3(
 		return _Utils_Tuple2(
 			{
 				currentPage: $author$project$Main$urlToPage(url),
+				isMenuOpen: false,
 				key: key
 			},
 			$elm$core$Platform$Cmd$none);
@@ -5245,23 +5246,38 @@ var $elm$url$Url$toString = function (url) {
 					_Utils_ap(http, url.host)),
 				url.path)));
 };
+var $elm$core$Basics$not = _Basics_not;
 var $elm$browser$Browser$Navigation$pushUrl = _Browser_pushUrl;
 var $author$project$Main$update = F2(
 	function (msg, model) {
-		if (msg.$ === 'Navigate') {
-			var path = msg.a;
-			return _Utils_Tuple2(
-				model,
-				A2($elm$browser$Browser$Navigation$pushUrl, model.key, path));
-		} else {
-			var url = msg.a;
-			return _Utils_Tuple2(
-				_Utils_update(
+		switch (msg.$) {
+			case 'Navigate':
+				var path = msg.a;
+				return _Utils_Tuple2(
 					model,
-					{
-						currentPage: $author$project$Main$urlToPage(url)
-					}),
-				$elm$core$Platform$Cmd$none);
+					A2($elm$browser$Browser$Navigation$pushUrl, model.key, path));
+			case 'UrlChanged':
+				var url = msg.a;
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{
+							currentPage: $author$project$Main$urlToPage(url)
+						}),
+					$elm$core$Platform$Cmd$none);
+			case 'ToggleMenu':
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{isMenuOpen: !model.isMenuOpen}),
+					$elm$core$Platform$Cmd$none);
+			default:
+				var path = msg.a;
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{isMenuOpen: false}),
+					A2($elm$browser$Browser$Navigation$pushUrl, model.key, path));
 		}
 	});
 var $elm$json$Json$Encode$string = _Json_wrap;
@@ -5274,8 +5290,37 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 	});
 var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
 var $elm$html$Html$div = _VirtualDom_node('div');
+var $author$project$Main$NavigateAndClose = function (a) {
+	return {$: 'NavigateAndClose', a: a};
+};
+var $author$project$Main$ToggleMenu = {$: 'ToggleMenu'};
 var $elm$html$Html$a = _VirtualDom_node('a');
-var $elm$html$Html$Attributes$id = $elm$html$Html$Attributes$stringProperty('id');
+var $elm$html$Html$button = _VirtualDom_node('button');
+var $elm$core$List$filter = F2(
+	function (isGood, list) {
+		return A3(
+			$elm$core$List$foldr,
+			F2(
+				function (x, xs) {
+					return isGood(x) ? A2($elm$core$List$cons, x, xs) : xs;
+				}),
+			_List_Nil,
+			list);
+	});
+var $elm$core$Tuple$second = function (_v0) {
+	var y = _v0.b;
+	return y;
+};
+var $elm$html$Html$Attributes$classList = function (classes) {
+	return $elm$html$Html$Attributes$class(
+		A2(
+			$elm$core$String$join,
+			' ',
+			A2(
+				$elm$core$List$map,
+				$elm$core$Tuple$first,
+				A2($elm$core$List$filter, $elm$core$Tuple$second, classes))));
+};
 var $elm$virtual_dom$VirtualDom$Normal = function (a) {
 	return {$: 'Normal', a: a};
 };
@@ -5293,95 +5338,168 @@ var $elm$html$Html$Events$onClick = function (msg) {
 		'click',
 		$elm$json$Json$Decode$succeed(msg));
 };
+var $elm$html$Html$span = _VirtualDom_node('span');
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
-var $author$project$Main$navigation = A2(
-	$elm$html$Html$div,
-	_List_fromArray(
-		[
-			$elm$html$Html$Attributes$class('navigation')
-		]),
-	_List_fromArray(
-		[
-			A2(
-			$elm$html$Html$a,
-			_List_fromArray(
-				[
-					$elm$html$Html$Events$onClick(
-					$author$project$Main$Navigate('/')),
-					$elm$html$Html$Attributes$class('nav-item'),
-					$elm$html$Html$Attributes$id('home-link')
-				]),
-			_List_fromArray(
-				[
-					$elm$html$Html$text('Home')
-				])),
-			$elm$html$Html$text(' | '),
-			A2(
-			$elm$html$Html$a,
-			_List_fromArray(
-				[
-					$elm$html$Html$Events$onClick(
-					$author$project$Main$Navigate('/blog')),
-					$elm$html$Html$Attributes$class('nav-item')
-				]),
-			_List_fromArray(
-				[
-					$elm$html$Html$text('Blog')
-				])),
-			$elm$html$Html$text(' | '),
-			A2(
-			$elm$html$Html$a,
-			_List_fromArray(
-				[
-					$elm$html$Html$Events$onClick(
-					$author$project$Main$Navigate('/projects')),
-					$elm$html$Html$Attributes$class('nav-item')
-				]),
-			_List_fromArray(
-				[
-					$elm$html$Html$text('Projects')
-				])),
-			$elm$html$Html$text(' | '),
-			A2(
-			$elm$html$Html$a,
-			_List_fromArray(
-				[
-					$elm$html$Html$Events$onClick(
-					$author$project$Main$Navigate('/books')),
-					$elm$html$Html$Attributes$class('nav-item')
-				]),
-			_List_fromArray(
-				[
-					$elm$html$Html$text('Books')
-				])),
-			$elm$html$Html$text(' | '),
-			A2(
-			$elm$html$Html$a,
-			_List_fromArray(
-				[
-					$elm$html$Html$Events$onClick(
-					$author$project$Main$Navigate('/movies')),
-					$elm$html$Html$Attributes$class('nav-item')
-				]),
-			_List_fromArray(
-				[
-					$elm$html$Html$text('Movies')
-				])),
-			$elm$html$Html$text(' | '),
-			A2(
-			$elm$html$Html$a,
-			_List_fromArray(
-				[
-					$elm$html$Html$Events$onClick(
-					$author$project$Main$Navigate('/papers')),
-					$elm$html$Html$Attributes$class('nav-item')
-				]),
-			_List_fromArray(
-				[
-					$elm$html$Html$text('Papers')
-				]))
-		]));
+var $author$project$Main$navigation = function (model) {
+	return A2(
+		$elm$html$Html$div,
+		_List_fromArray(
+			[
+				$elm$html$Html$Attributes$class('navigation')
+			]),
+		_List_fromArray(
+			[
+				A2(
+				$elm$html$Html$button,
+				_List_fromArray(
+					[
+						$elm$html$Html$Events$onClick($author$project$Main$ToggleMenu),
+						$elm$html$Html$Attributes$class('nav-toggle')
+					]),
+				_List_fromArray(
+					[
+						$elm$html$Html$text(
+						model.isMenuOpen ? '✕' : '☰')
+					])),
+				A2(
+				$elm$html$Html$div,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$classList(
+						_List_fromArray(
+							[
+								_Utils_Tuple2('nav-menu', true),
+								_Utils_Tuple2('open', model.isMenuOpen)
+							]))
+					]),
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$a,
+						_List_fromArray(
+							[
+								$elm$html$Html$Events$onClick(
+								$author$project$Main$NavigateAndClose('/')),
+								$elm$html$Html$Attributes$class('nav-item')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Home')
+							])),
+						A2(
+						$elm$html$Html$span,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('separator')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text(' | ')
+							])),
+						A2(
+						$elm$html$Html$a,
+						_List_fromArray(
+							[
+								$elm$html$Html$Events$onClick(
+								$author$project$Main$NavigateAndClose('/blog')),
+								$elm$html$Html$Attributes$class('nav-item')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Blog')
+							])),
+						A2(
+						$elm$html$Html$span,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('separator')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text(' | ')
+							])),
+						A2(
+						$elm$html$Html$a,
+						_List_fromArray(
+							[
+								$elm$html$Html$Events$onClick(
+								$author$project$Main$NavigateAndClose('/projects')),
+								$elm$html$Html$Attributes$class('nav-item')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Projects')
+							])),
+						A2(
+						$elm$html$Html$span,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('separator')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text(' | ')
+							])),
+						A2(
+						$elm$html$Html$a,
+						_List_fromArray(
+							[
+								$elm$html$Html$Events$onClick(
+								$author$project$Main$NavigateAndClose('/books')),
+								$elm$html$Html$Attributes$class('nav-item')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Books')
+							])),
+						A2(
+						$elm$html$Html$span,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('separator')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text(' | ')
+							])),
+						A2(
+						$elm$html$Html$a,
+						_List_fromArray(
+							[
+								$elm$html$Html$Events$onClick(
+								$author$project$Main$NavigateAndClose('/movies')),
+								$elm$html$Html$Attributes$class('nav-item')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Movies')
+							])),
+						A2(
+						$elm$html$Html$span,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('separator')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text(' | ')
+							])),
+						A2(
+						$elm$html$Html$a,
+						_List_fromArray(
+							[
+								$elm$html$Html$Events$onClick(
+								$author$project$Main$NavigateAndClose('/papers')),
+								$elm$html$Html$Attributes$class('nav-item')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Papers')
+							]))
+					]))
+			]));
+};
 var $elm$html$Html$h1 = _VirtualDom_node('h1');
 var $elm$html$Html$h2 = _VirtualDom_node('h2');
 var $elm$html$Html$p = _VirtualDom_node('p');
@@ -5717,7 +5835,7 @@ var $author$project$Main$view = function (model) {
 					]),
 				_List_fromArray(
 					[
-						$author$project$Main$navigation,
+						$author$project$Main$navigation(model),
 						$author$project$Main$pageContent(model.currentPage)
 					]))
 			]),
