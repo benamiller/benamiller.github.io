@@ -1,0 +1,32 @@
+html, body {
+	color: whitesmoke;
+	background-color: darkslategray;
+	overflow: auto;
+	scrollbar-width: none;
+}
+
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+	display: none;
+}
+
+.application {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	overflow: auto;
+	scrollbar-width: none;
+}
+
+.application::-webkit-scrollbar {
+	display: none;
+}
+
+.navigation {
+}
+
+.nav-item {
+	padding: 1rem;
+	cursor: pointer;
+}
+
