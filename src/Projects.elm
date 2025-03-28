@@ -6,8 +6,8 @@ import Html.Attributes exposing (class)
 
 type alias Project =
     { title : String
-    , author : String
-    , review : String
+    , tech : List String
+    , description : String
     }
 
 
@@ -23,19 +23,33 @@ projectReview : Project -> Html msg
 projectReview project =
     div [ class "project" ]
         [ h2 [] [ text project.title ]
-        , p [] [ text ("by " ++ project.author) ]
-        , p [] [ text project.review ]
         ]
 
 
 projects : List Project
 projects =
-    [ { title = "Title 1"
-      , author = "Author 1"
-      , review = "Review 1"
+    [ { title = "Essence"
+      , tech = [ "English", "Test" ]
+      , description = "Essence description"
       }
-    , { title = "Title 2"
-      , author = "Author 2"
-      , review = "Review 2"
+    , { title = "mlzero"
+      , tech = [ "Next.js", "React", "PostgreSQL", "Prisma" ]
+      , description = "mlzero description"
+      }
+    , { title = "mlc"
+      , tech = [ "English", "Test" ]
+      , description = "mlc description"
+      }
+    , { title = "Assassins"
+      , tech = [ "English", "Test" ]
+      , description = "Assassins description"
+      }
+    , { title = "Immersive Gaming"
+      , tech = [ "English", "Test" ]
+      , description = "Immersive Gaming description"
+      }
+    , { title = "Portfolio"
+      , tech = [ "English", "Test" ]
+      , description = "Elm portfolio description"
       }
     ]
