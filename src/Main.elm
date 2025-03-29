@@ -29,6 +29,7 @@ type Page
     | Books
     | Movies
     | Papers
+    | Nia
 
 
 init : () -> Url -> Nav.Key -> ( Model, Cmd Msg )
@@ -103,6 +104,8 @@ navigation model =
             , a [ onClick (NavigateAndClose "/movies"), class "nav-item" ] [ text "Movies" ]
             , span [ class "separator" ] [ text " | " ]
             , a [ onClick (NavigateAndClose "/papers"), class "nav-item" ] [ text "Papers" ]
+            , span [ class "separator" ] [ text " | " ]
+            , a [ onClick (NavigateAndClose "/nia"), class "nav-item" ] [ text "Nia" ]
             ]
         ]
 
@@ -128,6 +131,9 @@ pageContent page =
         Papers ->
             Papers.view
 
+        Nia ->
+            div [] [ h1 [] [ text "Nia" ], text "Nia" ]
+
 
 
 -- ROUTING
@@ -150,6 +156,9 @@ urlToPage url =
 
         "/papers" ->
             Papers
+
+        "/nia" ->
+            Nia
 
         _ ->
             Home
