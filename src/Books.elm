@@ -349,7 +349,7 @@ books =
       , author = "Yuval Noah Harari"
       , review = "Review for Sapiens"
       , published = "2013"
-      , read = "2024"
+      , read = "2005"
       }
     , { title = "Ender's Game"
       , author = "Yuval Noah Harari"
