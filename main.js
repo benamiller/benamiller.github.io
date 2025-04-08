@@ -5793,6 +5793,112 @@ var $author$project$Papers$view = A2(
 			_List_Nil,
 			A2($elm$core$List$map, $author$project$Papers$paperReview, $author$project$Papers$papers))
 		]));
+var $author$project$PinnedProjects$pinned_projects = _List_fromArray(
+	[
+		{
+		description: 'Essence description',
+		image: './assets/mlzero.JPG',
+		link: 'https://benmiller.ai',
+		tech: _List_fromArray(
+			['English', 'Test']),
+		title: 'Essence'
+	},
+		{
+		description: 'mlzero description',
+		image: './image',
+		link: 'https://benmiller.ai',
+		tech: _List_fromArray(
+			['Next.js', 'React', 'PostgreSQL', 'Prisma']),
+		title: 'mlzero'
+	},
+		{
+		description: 'mlc description',
+		image: './image',
+		link: 'https://benmiller.ai',
+		tech: _List_fromArray(
+			['English', 'Test']),
+		title: 'mlc'
+	},
+		{
+		description: 'Assassins description',
+		image: './image',
+		link: 'https://benmiller.ai',
+		tech: _List_fromArray(
+			['English', 'Test']),
+		title: 'Assassins'
+	},
+		{
+		description: 'Immersive Gaming description',
+		image: './image',
+		link: 'https://benmiller.ai',
+		tech: _List_fromArray(
+			['English', 'Test']),
+		title: 'Immersive Gaming'
+	},
+		{
+		description: 'Elm portfolio description',
+		image: './image',
+		link: 'https://benmiller.ai',
+		tech: _List_fromArray(
+			['English', 'Test']),
+		title: 'Portfolio'
+	}
+	]);
+var $elm$html$Html$img = _VirtualDom_node('img');
+var $elm$html$Html$Attributes$src = function (url) {
+	return A2(
+		$elm$html$Html$Attributes$stringProperty,
+		'src',
+		_VirtualDom_noJavaScriptOrHtmlUri(url));
+};
+var $author$project$PinnedProjects$project = function (pinned_project) {
+	return A2(
+		$elm$html$Html$div,
+		_List_fromArray(
+			[
+				$elm$html$Html$Attributes$class('pinned-project')
+			]),
+		_List_fromArray(
+			[
+				A2(
+				$elm$html$Html$h2,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text(pinned_project.title)
+					])),
+				A2(
+				$elm$html$Html$img,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$src(pinned_project.image)
+					]),
+				_List_Nil)
+			]));
+};
+var $author$project$PinnedProjects$view = A2(
+	$elm$html$Html$div,
+	_List_fromArray(
+		[
+			$elm$html$Html$Attributes$class('pinned-projects-container')
+		]),
+	_List_fromArray(
+		[
+			A2(
+			$elm$html$Html$h1,
+			_List_Nil,
+			_List_fromArray(
+				[
+					$elm$html$Html$text('Projects')
+				])),
+			A2(
+			$elm$html$Html$div,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('project-grid')
+				]),
+			A2($elm$core$List$map, $author$project$PinnedProjects$project, $author$project$PinnedProjects$pinned_projects))
+		]));
 var $author$project$Main$pageContent = function (page) {
 	switch (page.$) {
 		case 'Home':
@@ -5808,7 +5914,8 @@ var $author$project$Main$pageContent = function (page) {
 							[
 								$elm$html$Html$text('Home')
 							])),
-						$elm$html$Html$text('Welcome test 2')
+						$elm$html$Html$text('Welcome test 2'),
+						$author$project$PinnedProjects$view
 					]));
 		case 'Blog':
 			return A2(

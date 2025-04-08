@@ -8,6 +8,7 @@ import Html.Attributes exposing (class, classList)
 import Html.Events exposing (onClick)
 import Movies
 import Papers
+import PinnedProjects
 import Url exposing (Url)
 
 
@@ -114,7 +115,11 @@ pageContent : Page -> Html Msg
 pageContent page =
     case page of
         Home ->
-            div [] [ h1 [] [ text "Home" ], text "Welcome test 2" ]
+            div []
+                [ h1 [] [ text "Home" ]
+                , text "Welcome test 2"
+                , PinnedProjects.view
+                ]
 
         Blog ->
             div [] [ h1 [] [ text "Blog" ], text "This is blog." ]

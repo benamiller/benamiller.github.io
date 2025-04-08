@@ -30,6 +30,50 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 	cursor: pointer;
 }
 
+.pinned-projects-container {
+    margin: 20px;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.pinned-project {
+    border: 1px solid #ccc;
+    padding: 15px;
+    text-align: center;
+}
+
+.pinned-project img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.tech-tags {
+    margin: 10px 0;
+}
+
+.tech-tag {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+.project-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
 @media (min-width: 769px) {
     .nav-menu {
         display: block;
