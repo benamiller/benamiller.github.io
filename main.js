@@ -5893,7 +5893,10 @@ var $author$project$PinnedProjects$view = A2(
 				])),
 			A2(
 			$elm$html$Html$div,
-			_List_Nil,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('project-grid')
+				]),
 			A2($elm$core$List$map, $author$project$PinnedProjects$project, $author$project$PinnedProjects$pinned_projects))
 		]));
 var $author$project$Main$pageContent = function (page) {

@@ -17,7 +17,7 @@ view : Html msg
 view =
     div [ class "pinned-projects-container" ]
         [ h1 [] [ text "Projects" ]
-        , div [] (List.map project pinned_projects)
+        , div [ class "project-grid" ] (List.map project pinned_projects)
         ]
 
 
