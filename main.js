@@ -5171,6 +5171,7 @@ var $author$project$Main$Blog = {$: 'Blog'};
 var $author$project$Main$Books = {$: 'Books'};
 var $author$project$Main$Home = {$: 'Home'};
 var $author$project$Main$Movies = {$: 'Movies'};
+var $author$project$Main$Nia = {$: 'Nia'};
 var $author$project$Main$Papers = {$: 'Papers'};
 var $author$project$Main$Projects = {$: 'Projects'};
 var $author$project$Main$urlToPage = function (url) {
@@ -5186,6 +5187,8 @@ var $author$project$Main$urlToPage = function (url) {
 			return $author$project$Main$Movies;
 		case '/papers':
 			return $author$project$Main$Papers;
+		case '/nia':
+			return $author$project$Main$Nia;
 		default:
 			return $author$project$Main$Home;
 	}
@@ -5496,6 +5499,28 @@ var $author$project$Main$navigation = function (model) {
 						_List_fromArray(
 							[
 								$elm$html$Html$text('Papers')
+							])),
+						A2(
+						$elm$html$Html$span,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('separator')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text(' | ')
+							])),
+						A2(
+						$elm$html$Html$a,
+						_List_fromArray(
+							[
+								$elm$html$Html$Events$onClick(
+								$author$project$Main$NavigateAndClose('/nia')),
+								$elm$html$Html$Attributes$class('nav-item')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Nia')
 							]))
 					]))
 			]));
@@ -5819,8 +5844,23 @@ var $author$project$Main$pageContent = function (page) {
 			return $author$project$Books$view;
 		case 'Movies':
 			return $author$project$Movies$view;
-		default:
+		case 'Papers':
 			return $author$project$Papers$view;
+		default:
+			return A2(
+				$elm$html$Html$div,
+				_List_Nil,
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$h1,
+						_List_Nil,
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Nia')
+							])),
+						$elm$html$Html$text('Nia')
+					]));
 	}
 };
 var $author$project$Main$view = function (model) {
