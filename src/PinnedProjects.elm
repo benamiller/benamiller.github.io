@@ -1,7 +1,7 @@
 module PinnedProjects exposing (view)
 
-import Html exposing (Html, div, h1, h2, img, p, text)
-import Html.Attributes exposing (class, src)
+import Html exposing (Html, a, div, h1, h2, img, p, text)
+import Html.Attributes exposing (class, href, src, target)
 
 
 type alias PinnedProject =
@@ -26,45 +26,52 @@ project pinned_project =
     div [ class "pinned-project" ]
         [ h2 [] [ text pinned_project.title ]
         , img [ src pinned_project.image ] []
+        , a [ href pinned_project.link, target "_blank", class "project-link" ] [ text "View Project" ]
         ]
 
 
 pinned_projects : List PinnedProject
 pinned_projects =
-    [ { title = "Essence"
-      , tech = [ "English", "Test" ]
-      , description = "Essence description"
-      , link = "https://benmiller.ai"
-      , image = "./assets/mlzero.JPG"
-      }
-    , { title = "mlzero"
-      , tech = [ "Next.js", "React", "PostgreSQL", "Prisma" ]
+    [ { title = "mlzero"
+      , tech = [ "Next.js", "React", "PostgrSQL" ]
       , description = "mlzero description"
-      , link = "https://benmiller.ai"
-      , image = "./image"
+      , link = "https://mlzero.com"
+      , image = "./assets/mlzero.png"
       }
-    , { title = "mlc"
-      , tech = [ "English", "Test" ]
-      , description = "mlc description"
-      , link = "https://benmiller.ai"
-      , image = "./image"
+    , { title = "ZigTensor"
+      , tech = [ "Zig", "CUDA", "Machine Learning" ]
+      , description = "mlzero description"
+      , link = "https://github.com/zigtensor/zigtensor"
+      , image = "./assets/zigtensor.png"
+      }
+    , { title = "Personal Site"
+      , tech = [ "Elm", "Cloudflare", "GitHub Pages" ]
+      , description = "Personal site description"
+      , link = "https://github.com/benamiller/benamiller.github.io"
+      , image = "./assets/elm.png"
       }
     , { title = "Assassins"
-      , tech = [ "English", "Test" ]
+      , tech = [ "Android", "Kotlin" ]
       , description = "Assassins description"
-      , link = "https://benmiller.ai"
-      , image = "./image"
+      , link = "https://github.com/benamiller/assassins"
+      , image = "./assets/assassins.png"
       }
     , { title = "Immersive Gaming"
-      , tech = [ "English", "Test" ]
+      , tech = [ "PyTorch", "Vision Transformer", "Python" ]
       , description = "Immersive Gaming description"
-      , link = "https://benmiller.ai"
-      , image = "./image"
+      , link = "https://github.com/benamiller/immersive-gaming"
+      , image = "./assets/immersive_gaming.png"
       }
-    , { title = "Portfolio"
-      , tech = [ "English", "Test" ]
-      , description = "Elm portfolio description"
+    , { title = "MSc"
+      , tech = [ "Natural Language Processing", "Deep Learning for Healthcare" ]
+      , description = "University of Illinois Urbana-Champaign"
       , link = "https://benmiller.ai"
-      , image = "./image"
+      , image = "./assets/uiuc.png"
+      }
+    , { title = "Machine Learning Certificates"
+      , tech = [ "Stanford Machine Learning Specialization", "Stanford Deep Learning Specialization" ]
+      , description = "Coursera"
+      , link = "https://coursera.org/share/f5fa4c831a360de7841411165ebabcc4"
+      , image = "./assets/coursera_ml.png"
       }
     ]
