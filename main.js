@@ -5796,54 +5796,68 @@ var $author$project$Papers$view = A2(
 var $author$project$PinnedProjects$pinned_projects = _List_fromArray(
 	[
 		{
-		description: 'Essence description',
-		image: './assets/mlzero.JPG',
-		link: 'https://benmiller.ai',
-		tech: _List_fromArray(
-			['English', 'Test']),
-		title: 'Essence'
-	},
-		{
 		description: 'mlzero description',
-		image: './image',
-		link: 'https://benmiller.ai',
+		image: './assets/mlzero.png',
+		link: 'https://mlzero.com',
 		tech: _List_fromArray(
-			['Next.js', 'React', 'PostgreSQL', 'Prisma']),
+			['Next.js', 'React', 'PostgrSQL']),
 		title: 'mlzero'
 	},
 		{
-		description: 'mlc description',
-		image: './image',
-		link: 'https://benmiller.ai',
+		description: 'mlzero description',
+		image: './assets/zigtensor.png',
+		link: 'https://github.com/zigtensor/zigtensor',
 		tech: _List_fromArray(
-			['English', 'Test']),
-		title: 'mlc'
+			['Zig', 'CUDA', 'Machine Learning']),
+		title: 'ZigTensor'
+	},
+		{
+		description: 'Personal site description',
+		image: './assets/elm.png',
+		link: 'https://github.com/benamiller/benamiller.github.io',
+		tech: _List_fromArray(
+			['Elm', 'Cloudflare', 'GitHub Pages']),
+		title: 'Personal Site'
 	},
 		{
 		description: 'Assassins description',
-		image: './image',
-		link: 'https://benmiller.ai',
+		image: './assets/assassins.png',
+		link: 'https://github.com/benamiller/assassins',
 		tech: _List_fromArray(
-			['English', 'Test']),
+			['Android', 'Kotlin']),
 		title: 'Assassins'
 	},
 		{
 		description: 'Immersive Gaming description',
-		image: './image',
-		link: 'https://benmiller.ai',
+		image: './assets/immersive_gaming.png',
+		link: 'https://github.com/benamiller/immersive-gaming',
 		tech: _List_fromArray(
-			['English', 'Test']),
+			['PyTorch', 'Vision Transformer', 'Python']),
 		title: 'Immersive Gaming'
 	},
 		{
-		description: 'Elm portfolio description',
-		image: './image',
+		description: 'University of Illinois Urbana-Champaign',
+		image: './assets/uiuc.png',
 		link: 'https://benmiller.ai',
 		tech: _List_fromArray(
-			['English', 'Test']),
-		title: 'Portfolio'
+			['Natural Language Processing', 'Deep Learning for Healthcare']),
+		title: 'MSc'
+	},
+		{
+		description: 'Coursera',
+		image: './assets/coursera_ml.png',
+		link: 'https://coursera.org/share/f5fa4c831a360de7841411165ebabcc4',
+		tech: _List_fromArray(
+			['Stanford Machine Learning Specialization', 'Stanford Deep Learning Specialization']),
+		title: 'Machine Learning Certificates'
 	}
 	]);
+var $elm$html$Html$Attributes$href = function (url) {
+	return A2(
+		$elm$html$Html$Attributes$stringProperty,
+		'href',
+		_VirtualDom_noJavaScriptUri(url));
+};
 var $elm$html$Html$img = _VirtualDom_node('img');
 var $elm$html$Html$Attributes$src = function (url) {
 	return A2(
@@ -5851,6 +5865,7 @@ var $elm$html$Html$Attributes$src = function (url) {
 		'src',
 		_VirtualDom_noJavaScriptOrHtmlUri(url));
 };
+var $elm$html$Html$Attributes$target = $elm$html$Html$Attributes$stringProperty('target');
 var $author$project$PinnedProjects$project = function (pinned_project) {
 	return A2(
 		$elm$html$Html$div,
@@ -5873,7 +5888,19 @@ var $author$project$PinnedProjects$project = function (pinned_project) {
 					[
 						$elm$html$Html$Attributes$src(pinned_project.image)
 					]),
-				_List_Nil)
+				_List_Nil),
+				A2(
+				$elm$html$Html$a,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$href(pinned_project.link),
+						$elm$html$Html$Attributes$target('_blank'),
+						$elm$html$Html$Attributes$class('project-link')
+					]),
+				_List_fromArray(
+					[
+						$elm$html$Html$text('View Project')
+					]))
 			]));
 };
 var $author$project$PinnedProjects$view = A2(
