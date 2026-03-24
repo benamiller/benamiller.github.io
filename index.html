@@ -1,13 +1,226 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Ben</title>
-	<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ben Miller</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #fafafa;
+      color: #111;
+      font-size: 17px;
+      line-height: 1.7;
+      padding: 0 24px;
+    }
+
+    a { color: #0066cc; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 64px 0 80px;
+    }
+
+    /* Header */
+    header {
+      margin-bottom: 64px;
+    }
+
+    header h1 {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      margin-bottom: 6px;
+    }
+
+    header p.tagline {
+      color: #555;
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+    }
+
+    nav a {
+      font-size: 14px;
+      color: #555;
+      font-weight: 500;
+    }
+
+    nav a:hover { color: #111; text-decoration: none; }
+
+    /* Sections */
+    section {
+      margin-bottom: 56px;
+    }
+
+    section h2 {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: #888;
+      margin-bottom: 28px;
+    }
+
+    /* Posts */
+    .post-list {
+      list-style: none;
+    }
+
+    .post-list li {
+      margin-bottom: 28px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    .post-list li:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .post-list a.post-title {
+      font-family: 'Lora', Georgia, serif;
+      font-size: 19px;
+      font-weight: 600;
+      color: #111;
+      display: block;
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+
+    .post-list a.post-title:hover {
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    .post-meta {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 8px;
+    }
+
+    .post-excerpt {
+      font-size: 15px;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    /* About */
+    .about-text {
+      font-size: 16px;
+      color: #333;
+      line-height: 1.8;
+    }
+
+    .about-text p + p { margin-top: 14px; }
+
+    /* Footer */
+    footer {
+      margin-top: 80px;
+      padding-top: 28px;
+      border-top: 1px solid #e8e8e8;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer p {
+      font-size: 13px;
+      color: #888;
+    }
+
+    footer .links {
+      display: flex;
+      gap: 16px;
+    }
+
+    footer .links a {
+      font-size: 13px;
+      color: #888;
+    }
+
+    footer .links a:hover { color: #111; }
+
+    @media (max-width: 560px) {
+      body { font-size: 16px; }
+      .container { padding: 40px 0 60px; }
+      header { margin-bottom: 48px; }
+      header h1 { font-size: 24px; }
+    }
+  </style>
 </head>
 <body>
-	<div id="app"></div>
-	<script src="main.js"></script>
-	<script>Elm.Main.init({ node: document.getElementById("app") });</script>
+  <div class="container">
+
+    <header>
+      <h1>Ben Miller</h1>
+      <p class="tagline">Building things. Thinking about AI, systems, and what comes next.</p>
+      <nav>
+        <a href="/">Writing</a>
+        <a href="/about">About</a>
+        <a href="https://github.com/benamiller">GitHub</a>
+        <a href="https://twitter.com/benamiller">X</a>
+      </nav>
+    </header>
+
+    <section id="writing">
+      <h2>Writing</h2>
+      <ul class="post-list">
+
+        <li>
+          <a class="post-title" href="#">The Quiet Shift in How AI Models Reason</a>
+          <p class="post-meta">March 2025</p>
+          <p class="post-excerpt">Something changed in the last year — not in benchmarks, but in the texture of working alongside these systems. A reflection on chain-of-thought, reliability, and what I actually trust now.</p>
+        </li>
+
+        <li>
+          <a class="post-title" href="#">On Building Small: Why I Still Reach for Simplicity</a>
+          <p class="post-meta">January 2025</p>
+          <p class="post-excerpt">Every few months I prototype something new. Lately I've noticed a pattern: the projects I finish are always the ones where I resisted adding more. Some notes on scope, restraint, and shipping.</p>
+        </li>
+
+        <li>
+          <a class="post-title" href="#">Real-World Intelligence: Why Robotics Is the Next Platform Shift</a>
+          <p class="post-meta">November 2024</p>
+          <p class="post-excerpt">Software ate the world. Now it's learning to move through it. I've been watching the robotics space closely and I think we're at the start of something similar to the early smartphone era.</p>
+        </li>
+
+      </ul>
+    </section>
+
+    <section id="about">
+      <h2>About</h2>
+      <div class="about-text">
+        <p>I'm Ben — I work on software, think about AI and emerging technology, and occasionally write about what I find interesting. This site is a place for longer thoughts.</p>
+        <p>If something here resonates, feel free to reach out.</p>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Ben Miller</p>
+      <div class="links">
+        <a href="https://github.com/benamiller">GitHub</a>
+        <a href="https://twitter.com/benamiller">X / Twitter</a>
+        <a href="mailto:mrbenamiller@gmail.com">Email</a>
+      </div>
+    </footer>
+
+  </div>
 </body>
 </html>
